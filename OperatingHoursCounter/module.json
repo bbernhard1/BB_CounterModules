@@ -1,0 +1,14 @@
+{
+    "id": "{1C0D4F28-5E69-1CAF-32B6-AC4DFD04A850}",
+    "name": "BB_Betriebsstundenzaehler",
+    "type": 3,
+    "vendor": "",
+    "aliases": [
+        "BB_Betriebsstundenzähler"
+    ],
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "BSZ",
+    "url": "e"
+}

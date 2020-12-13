@@ -1,0 +1,25 @@
+{
+    "translations": {
+        "de": {
+            "The instance is inactive.": "Die Instanz ist inaktiv",
+            "No variable selected.": "Keine Variable ausgewählt.",
+            "Selcted variable does not exist.": "Ausgewählte Variable existiert nicht.",
+            "Selected variable must be logged and of type boolean.": "Ausgewählte Variable muss geloggt und vom Typ Boolean sein.",
+            "Source": "Quelle",
+            "Update Interval": "Aktualisierungsintervall",
+            "Minutes": "Minuten",
+            "Hours of Operation": "Betriebsstunden",
+            "Hours of Operation this day": "Aktueller Tag",
+            "Hours of Operation this month": "Aktueller Monat",
+            "Hours of Operation this week": "Aktueller Woche",
+            "Hours of Operation this year": "Aktuelles Jahr",
+            " hours": " Stunden",
+            "Active": "Aktiv",
+            "Calculate": "Berechnen",
+            "Add daily summary": "Berechne Betriebsstunden pro Tag",
+            "Add weekly summary": "Berechne Betriebsstunden pro Woche",
+            "Add monthly summary": "Berechne Betriebsstunden pro Monat",
+            "Add yearly summary": "Berechne Betriebsstunden pro Yahr"
+        }
+    }
+}

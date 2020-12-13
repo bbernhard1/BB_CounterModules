@@ -1,0 +1,71 @@
+{
+    "elements": [
+        {
+            "type": "CheckBox",
+            "name": "Active",
+            "caption": "Active"
+        },
+        {
+            "type": "SelectVariable",
+            "name": "Source",
+            "caption": "Source",
+            "width": "100%"
+        },
+        {
+            "type": "NumberSpinner",
+            "name": "Interval",
+            "caption": "Update Interval",
+            "minimum": 1,
+            "suffix": "Minutes"
+        },
+        {
+            "type": "CheckBox",
+            "name": "CalcDaily",
+            "caption": "Add daily summary"
+        },
+        {
+            "type": "CheckBox",
+            "name": "CalcWeekly",
+            "caption": "Add weekly summary"
+        },
+        {
+            "type": "CheckBox",
+            "name": "CalcMonthly",
+            "caption": "Add monthly summary"
+        },
+        {
+            "type": "CheckBox",
+            "name": "CalcYearly",
+            "caption": "Add yearly summary"
+        }
+    ],
+    "actions": [
+        {
+            "type": "Button",
+            "caption": "Calculate",
+            "onClick": "BSZ_Calculate($id);"
+        }
+    ],
+    "status": [
+        {
+            "code": 104,
+            "caption": "The instance is inactive.",
+            "icon": "inactive"
+        },
+        {
+            "code": 200,
+            "caption": "Selcted variable does not exist.",
+            "icon": "error"
+        },
+        {
+            "code": 201,
+            "caption": "Selected variable must be logged and of type boolean.",
+            "icon": "error"
+        },
+        {
+            "code": 202,
+            "caption": "No variable selected.",
+            "icon": "error"
+        }
+    ]
+}
