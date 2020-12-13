@@ -1,4 +1,4 @@
-# Betriebsstundenzähler
+# BBs Counter Modules
 
 The BB_CounterModule comes with te following modules:
 
