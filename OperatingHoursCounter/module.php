@@ -140,8 +140,6 @@ class BB_Betriebsstundenzaehler extends IPSModule
         $this->SetValue('OperatingHoursYear', calcHours($values));
     }
 
-    }
-
     private function calcHours($values) {
         $seconds = 0;
         foreach ($values as $value) {
@@ -149,6 +147,10 @@ class BB_Betriebsstundenzaehler extends IPSModule
         }
         return ($seconds / (60 * 60));
    }
+
+    }
+
+    
 
 
 
