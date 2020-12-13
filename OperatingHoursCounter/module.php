@@ -77,6 +77,7 @@ class BB_Betriebsstundenzaehler extends IPSModule
         }
     }
 
+
     public function Calculate()
     {
         $errorState = $this->getErrorState();
@@ -97,54 +98,42 @@ class BB_Betriebsstundenzaehler extends IPSModule
         $archiveID = IPS_GetInstanceListByModuleID('{43192F0B-135B-4CE7-A0A7-1475603F3060}')[0];
         $values = AC_GetAggregatedValues($archiveID, $this->ReadPropertyInteger('Source'), 4, 0, time(), 0);
         $this->SendDebug('AggregatedValues', json_encode($values), 0);
-        $seconds = 0;
-        foreach ($values as $value) {
-            $seconds += $value['Avg'] * $value['Duration'];
-        }
-        $this->SetValue('OperatingHours', ($seconds / (60 * 60)));
-
+        $this->SetValue('OperatingHours', $this->calcHours( $values));
 
 // calc OperatingHours per day
  if ($this->ReadPropertyBoolean('CalcDaily')) {        
         $values = AC_GetAggregatedValues($archiveID, $this->ReadPropertyInteger('Source'), 1, strtotime('today 00:00:00', time()), time(), 0);
-        $seconds = 0;
-        foreach ($values as $value) {
-            $seconds += $value['Avg'] * $value['Duration'];
-        }
-        $this->SetValue('OperatingHoursDay', ($seconds / (60 * 60)));
+        $this->SetValue('OperatingHoursDay', $this->calcHours( $values));
     }
 
 // calc OperatingHours per week
  if ($this->ReadPropertyBoolean('CalcWeekly')) {        
         $values = AC_GetAggregatedValues($archiveID, $this->ReadPropertyInteger('Source'), 2, strtotime('last monday 00:00:00', time()), time(), 0);
-        $seconds = 0;
-        foreach ($values as $value) {
-            $seconds += $value['Avg'] * $value['Duration'];
-        }
-        $this->SetValue('OperatingHoursWeek', ($seconds / (60 * 60)));
+        $this->SetValue('OperatingHoursWeek', $this->calcHours( $values));
     }
 
 // calc OperatingHours per month
  if ($this->ReadPropertyBoolean('CalcMonthly')) {
         $values = AC_GetAggregatedValues($archiveID, $this->ReadPropertyInteger('Source'), 3, strtotime('first day of this month 00:00:00', time()), time(), 0);
-        $seconds = 0;
-        foreach ($values as $value) {
-            $seconds += $value['Avg'] * $value['Duration'];
-        }
-        $this->SetValue('OperatingHoursMonth', ($seconds / (60 * 60)));
+        $this->SetValue('OperatingHoursMonth', $this->calcHours( $values));
     }
 
 // calc OperatingHours per year
   if ($this->ReadPropertyBoolean('CalcYearly')) {
         $values = AC_GetAggregatedValues($archiveID, $this->ReadPropertyInteger('Source'), 4, strtotime('1st january 00:00:00', time()), time(), 0);
-        $seconds = 0;
-        foreach ($values as $value) {
-            $seconds += $value['Avg'] * $value['Duration'];
-        }
-        $this->SetValue('OperatingHoursYear', ($seconds / (60 * 60)));
+        $this->SetValue('OperatingHoursYear', $this->calcHours( $values));
     }
 
-    }
+}
+
+    private function calcHours($values)
+    {
+            $seconds = 0;
+            foreach ($values as $value) {
+                $seconds += $value['Avg'] * $value['Duration'];
+            }
+            return($seconds / (60 * 60));
+     }    
 
     private function setupInstance()
     {
