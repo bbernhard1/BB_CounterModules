@@ -137,14 +137,22 @@ class BB_Betriebsstundenzaehler extends IPSModule
 // calc OperatingHours per year
   if ($this->ReadPropertyBoolean('CalcYearly')) {
         $values = AC_GetAggregatedValues($archiveID, $this->ReadPropertyInteger('Source'), 4, strtotime('1st january 00:00:00', time()), time(), 0);
+        $this->SetValue('OperatingHoursYear', calcHours($values));
+    }
+
+    }
+
+    private function calcHours($values) {
         $seconds = 0;
         foreach ($values as $value) {
             $seconds += $value['Avg'] * $value['Duration'];
         }
-        $this->SetValue('OperatingHoursYear', ($seconds / (60 * 60)));
-    }
+        return ($seconds / (60 * 60));
+   }
 
-    }
+
+
+
 
     private function setupInstance()
     {
