@@ -1,6 +1,6 @@
 # Betriebsstundenzähler
 
-The BB_CounterModule comes with te following modules:
+The BB_CounterModule project comes with the following modules:
 
 - __OperatingHoursCounter__ ([Dokumentation](/OperatingHoursCounter/README.md)
 	This is a fork of the SYMCON included "Betriebsstundenzähler" module.
